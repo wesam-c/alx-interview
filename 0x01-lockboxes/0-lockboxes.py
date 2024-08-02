@@ -1,32 +1,27 @@
 #!/usr/bin/python3
-"""Solves the lock boxes puzzle """
+"""Solves the lock boxes puzzle."""
+
 
 def canUnlockAll(boxes):
     """
-    take boxes
-        created set of keys
-            go to box0
-                get all keys and add them setofkeys
-            start opening boxes from setofkeys
-                got to first key we have in setofkeys
-                    go to the box coresponding to that key
-                        and take the keys from it and add them to the setofkeys
-                    keep looping through all setofkeys
-            ignore keys that are more than number of boxes
+    Determines if all the boxes can be unlocked.
 
-            track opening of boxes by counter, if at end it = to length off boxes, it mean all boxes unlock
-    
+    Parameters:
+    boxes (List[List[int]]): A list of lists, where each sublist contains keys.
+
+    Returns:
+    bool: True if all boxes can be unlocked, otherwise False.
     """
     total_boxes = len(boxes)
-    setofkeys = [0]
+    set_of_keys = [0]
     counter = 0
     index = 0
 
-    while index < len(setofkeys):
-        setkey = setofkeys[index]
-        for key in boxes[setkey]:
-            if 0 < key < total_boxes and key not in setofkeys:
-                setofkeys.append(key)
+    while index < len(set_of_keys):
+        set_key = set_of_keys[index]
+        for key in boxes[set_key]:
+            if 0 < key < total_boxes and key not in set_of_keys:
+                set_of_keys.append(key)
                 counter += 1
         index += 1
 

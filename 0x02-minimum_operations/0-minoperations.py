@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 def min_operations(n):
     """
     Calculates the fewest number of operations needed to result in exactly n
@@ -15,16 +13,17 @@ def min_operations(n):
     if n < 2:
         return 0
 
-    current_num_of_h = 1
-    copied = 0
-    num_of_operations = 0
+    num_operations = 0
+    current = n
 
-    while current_num_of_h < n:
-        if n % current_num_of_h == 0:
-            copied = current_num_of_h
-            num_of_operations += 1
+    # Iterate over possible divisors
+    for i in range(2, int(n**0.5) + 1):
+        while current % i == 0:
+            num_operations += i
+            current //= i
 
-        current_num_of_h += copied
-        num_of_operations += 1
+    # If there is any prime factor greater than sqrt(n)
+    if current > 1:
+        num_operations += current
 
-    return num_of_operations
+    return num_operations

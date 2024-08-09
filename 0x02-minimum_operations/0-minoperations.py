@@ -12,19 +12,19 @@ def min_operations(n):
     Returns:
     int: The fewest number of operations needed. Returns 0 if n is less than 2.
     """
-    if n < 2:
+    min_operations = 0
+    char_length = 1
+    clipboard = 0
+
+    if n <= 1:
         return 0
 
-    current_num_of_h = 1
-    copied = 0
-    num_of_operations = 0
+    while char_length < n:
+        if n % char_length == 0:
+            clipboard = char_length
+            min_operations += 1
 
-    while current_num_of_h < n:
-        if n % current_num_of_h == 0:
-            copied = current_num_of_h
-            num_of_operations += 1
-
-        current_num_of_h += copied
-        num_of_operations += 1
-
-    return num_of_operations
+        char_length += clipboard
+        min_operations += 1
+    
+    return min_operations

@@ -1,30 +1,29 @@
 #!/usr/bin/python3
 
-def min_operations(n):
+def minOperations(n):
     """
-    Calculates the fewest number of operations needed to result in exactly n
-    'H' characters in a text file using a text editor that supports only two
-    operations: Copy All and Paste.
+    Calculate the fewest number of operations needed to achieve exactly n 'H' characters.
+
+    The function uses the factorization of n to determine the minimum number of operations
+    needed to generate exactly n 'H' characters in the text editor. The operations available 
+    are 'Copy All' and 'Paste'. 
 
     Parameters:
-    n (int): The desired number of 'H' characters.
+    n (int): The number of 'H' characters to be achieved.
 
     Returns:
-    int: The fewest number of operations needed. Returns 0 if n is less than 2.
+    int: The minimum number of operations needed, or 0 if n is impossible to achieve.
     """
-    min_operations = 0
-    char_length = 1
-    clipboard = 0
-
     if n <= 1:
         return 0
-
-    while char_length < n:
-        if n % char_length == 0:
-            clipboard = char_length
-            min_operations += 1
-
-        char_length += clipboard
-        min_operations += 1
     
-    return min_operations
+    operations = 0
+    factor = 2
+    
+    while n > 1:
+        while n % factor == 0:
+            operations += factor
+            n //= factor
+        factor += 1
+    
+    return operations

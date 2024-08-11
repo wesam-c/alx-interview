@@ -1,5 +1,12 @@
 #!/usr/bin/python3
 
+"""
+Module to calculate the fewest number of operations needed to achieve exactly n 'H' characters.
+
+Functions:
+    minOperations(n): Returns the minimum number of operations required.
+"""
+
 def minOperations(n):
     """
     Calculate the fewest number of operations needed to achieve exactly n 'H' characters.
@@ -13,6 +20,12 @@ def minOperations(n):
 
     Returns:
     int: The minimum number of operations needed, or 0 if n is impossible to achieve.
+
+    Example:
+    >>> minOperations(9)
+    6
+    >>> minOperations(12)
+    7
     """
     if n <= 1:
         return 0
